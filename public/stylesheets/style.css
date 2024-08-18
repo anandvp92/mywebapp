@@ -1,6 +1,20 @@
-.test {
+
+
+
+.test .mycard{
 display: flex;
+padding: auto;
 flex-direction: row;
-gap: 1rem;
 justify-content: space-evenly;
+}
+
+
+
+#card{
+    border:none;
+
+}
+
+.container{
+padding: 0 10rem ;
 }
