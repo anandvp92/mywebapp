@@ -1,0 +1,37 @@
+<div class="container ">
+    <div class="d-flex flex-row-reverse mt-4 mb-4" >
+<a href="/admin/createproducts"><button type="button" class="btn btn-success ">Add Products</button></a>
+
+    </div>
+
+<table class="table table-hover" style="text-align:center;">
+  <thead >
+    <tr>
+      <th scope="col">Si NO:</th>
+      <th scope="col">Brand Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Category</th>
+      <th scope="col">Image</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody >
+    {{#each product}}
+    <tr>
+      <th scope="row">{{ inc @index}}</th>
+      <td>{{this.name}}</td>
+      <td>{{this.price}}</td>
+      <td>{{this.catogoray}}</td>
+      <td><img src="{{this.pic}}" style="width: 80px; height:auto"></td>
+      <td>
+        <button>Delete</button>
+        <button>Edit</button>
+      </td>
+     
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+</div>
+
