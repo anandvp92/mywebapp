@@ -9,6 +9,9 @@ var hbs = require('express-handlebars');
 var adminRouter = require('./routes/admin');
 var usersRouter = require('./routes/users');
 var productRouter = require('./routes/product');
+var all_usersRouter= require('./routes/all_users');
+var contact_us_Router= require('./routes/contact_us');
+
 
 
 var app = express();
@@ -34,9 +37,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Route handlers
+
+app.use('/', usersRouter);
 app.use('/admin', adminRouter);
-app.use('/users', usersRouter);
-app.use('/products', productRouter);
+app.use('/admin/products', productRouter);
+app.use('/admin/allusers',all_usersRouter);
+app.use('/contact',contact_us_Router);
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
