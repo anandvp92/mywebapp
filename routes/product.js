@@ -23,7 +23,7 @@ const products = [
 ]
 
 router.get('/',(req,res,next)=>{
-res.render('about',{title:"About page",products});
+res.render('product',{title:"Product Page",products,user:true});
 });
 
 
