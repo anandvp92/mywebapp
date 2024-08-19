@@ -11,6 +11,8 @@ var usersRouter = require('./routes/users');
 var productRouter = require('./routes/product');
 var all_usersRouter= require('./routes/all_users');
 var contact_us_Router= require('./routes/contact_us');
+var user_product = require('./routes/user_product');
+var create_products = require('./routes/create_product');
 
 
 
@@ -22,7 +24,7 @@ app.set('view engine', 'hbs'); // This should come after app.engine setup
 app.engine('hbs',hbs.engine({extname:'hbs',
   defaultLayout:'layout',
   layoutsDir:__dirname+'/views/layout/',
-  partialsDir:__dirname+'/views/partials',
+  partialsDir:[__dirname+'/views/partials/',__dirname+'/views/admin/']
 
 }));
 app.set('views', path.join(__dirname, 'views'));
@@ -43,6 +45,8 @@ app.use('/admin', adminRouter);
 app.use('/admin/products', productRouter);
 app.use('/admin/allusers',all_usersRouter);
 app.use('/contact',contact_us_Router);
+app.use('/products',user_product);
+app.use('/admin/create_products',create_products);
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {

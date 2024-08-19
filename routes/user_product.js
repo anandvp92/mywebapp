@@ -4,8 +4,10 @@ var router = express.Router();
 
 
 router.get('/',(req,res,next)=>{
-    return res.render('contact_us',{title:"Contact Us"});
+    return res.render('user_product',{title:'Products'});
 });
 
-module.exports=router;
+
+module.exports= router;
+
 
