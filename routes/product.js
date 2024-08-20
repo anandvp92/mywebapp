@@ -23,8 +23,12 @@ const products = [
 ]
 
 router.get('/',(req,res,next)=>{
+    products
 res.render('product',{title:"Product Page",products,admin:true});
 });
 
 
+
 module.exports = router;
+
+module.exports.get= ()=> products;
