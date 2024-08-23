@@ -41,9 +41,6 @@ app.use(fileupload());
 // Route handlers
 db.connect((err)=>{
   if (err)  console.log(err);
-
-  else console.log("Database Connected");
-
 });
 
 app.use('/', usersRouter);

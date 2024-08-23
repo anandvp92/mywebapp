@@ -5,15 +5,14 @@ module.exports = {
         console.log("Adding product:", product);
 
         const database = db.get();
-
         database.collection('product').insertOne(product)
             .then((result) => {
                 console.log("Insert Result:", result);
-                callback(true);
+                callback("Producted Added");
             })
             .catch((err) => {
                 console.error("Insert Error:", err);
-                callback(false);
+                callback("Something went wrong");
             });
     }
 }
