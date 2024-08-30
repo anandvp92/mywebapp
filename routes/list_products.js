@@ -2,33 +2,22 @@ const express = require('express');
 const router = express.Router();
 var Handlebars = require('handlebars');
 let ts = require('../routes/product');
+const product_helpers = require('../helpers/product_helpers');
 
-
-
-// const products = [
-//     {name:"nokia",brand:"nokia",catogoray:"phone" ,price:35000, pic:"https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/v/e/a/-original-imahfk4xuk7ntphs.jpeg?q=80"},
-//     {name:"nokia",brand:"nokia",catogoray:"phone" ,price:35000,
-//          pic:"https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/h/d/9/-original-imagtc2qzgnnuhxh.jpeg?q=70"},
-//     {name:"nokia",brand:"nokia",catogoray:"phone" ,price:35000, pic:"https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/h/q/m6-pro-5g-mzb0eprin-poco-original-imags3e7vewsafst.jpeg?q=70"},
-//     {name:"nokia",brand:"nokia",catogoray:"phone" ,price:35000, pic:"https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/h/q/m6-pro-5g-mzb0eprin-poco-original-imags3e7vewsafst.jpeg?q=70"},
-//     {name:"nokia",brand:"nokia",catogoray:"phone" ,price:35000, pic:"https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/h/q/m6-pro-5g-mzb0eprin-poco-original-imags3e7vewsafst.jpeg?q=70"},
-//     {name:"nokia",brand:"nokia",catogoray:"phone" ,price:35000, pic:"https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/h/q/m6-pro-5g-mzb0eprin-poco-original-imags3e7vewsafst.jpeg?q=70"},
-//     {name:"nokia",brand:"nokia",catogoray:"phone" ,price:35000, pic:"https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/h/q/m6-pro-5g-mzb0eprin-poco-original-imags3e7vewsafst.jpeg?q=70"},
-//     {name:"nokia",brand:"nokia",catogoray:"phone" ,price:35000, pic:"https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/h/q/m6-pro-5g-mzb0eprin-poco-original-imags3e7vewsafst.jpeg?q=70"},
-//     {name:"nokia",brand:"nokia",catogoray:"phone" ,price:35000, pic:"https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/h/q/m6-pro-5g-mzb0eprin-poco-original-imags3e7vewsafst.jpeg?q=70"},
-//     {name:"nokia",brand:"nokia",catogoray:"phone" ,price:35000, pic:"https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/h/q/m6-pro-5g-mzb0eprin-poco-original-imags3e7vewsafst.jpeg?q=70"},
-//     {name:"nokia",brand:"nokia",catogoray:"phone" ,price:35000, pic:"https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/h/q/m6-pro-5g-mzb0eprin-poco-original-imags3e7vewsafst.jpeg?q=70"},
-//     {name:"nokia",brand:"nokia",catogoray:"phone" ,price:35000, pic:"https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/h/q/m6-pro-5g-mzb0eprin-poco-original-imags3e7vewsafst.jpeg?q=70"},
-//     {name:"nokia",brand:"nokia",catogoray:"phone" ,price:35000, pic:"https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/h/q/m6-pro-5g-mzb0eprin-poco-original-imags3e7vewsafst.jpeg?q=70"},
-//     {name:"nokia",brand:"nokia",catogoray:"phone" ,price:35000, pic:"https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/h/q/m6-pro-5g-mzb0eprin-poco-original-imags3e7vewsafst.jpeg?q=70"},
-//     {name:"nokia",brand:"nokia",catogoray:"phone" ,price:35000, pic:"https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/h/q/m6-pro-5g-mzb0eprin-poco-original-imags3e7vewsafst.jpeg?q=70"},
-// ]
-
-
-
+const product_data ={
+    datas:null
+}
 
 router.get('/',(req,res,next)=>{
-return res.render('admin/list_products',{admin:true,title:'Product List',product:ts.get()});
+
+    product_helpers.list_Products().then(data=>{
+        console.log(data)
+    return res.render('admin/list_products',{admin:true,title:'Product List',product:data});
+     
+    }).catch(err=>{
+        console.log(err);
+    })
+//return res.render('admin/list_products',{admin:true,title:'Product List',product:ts.get()});
 });
 
 module.exports=router;

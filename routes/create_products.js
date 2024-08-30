@@ -14,7 +14,7 @@ return res.render('admin/create_products',{title:"Create product" , admin:true})
 router.post('/',(req,res)=>{
     productHelper.addProduct(req.body,callback=>console.log(callback))
 
-    return res.send('Sumitted');
+    return res.redirect('/admin/listproducts');
     });
 
 
