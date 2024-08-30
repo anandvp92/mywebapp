@@ -13,6 +13,8 @@ var contact_us_Router= require('./routes/contact_us');
 var user_product = require('./routes/user_product');
 var create_products = require('./routes/create_products');
 var list_products= require('./routes/list_products');
+var cart_Router = require('./routes/cart');
+var orders_Router=require('./routes/orders');
 
 var fileupload= require('express-fileupload');
 
@@ -50,7 +52,9 @@ app.use('/admin/allusers',all_usersRouter);
 app.use('/contact',contact_us_Router);
 app.use('/products',user_product);
 app.use('/admin/createproducts',create_products);
-app.use('/admin/listproducts',list_products)
+app.use('/admin/listproducts',list_products);
+app.use('/cart',cart_Router);
+app.use('/orders',orders_Router);
 
 
 // Catch 404 and forward to error handler
