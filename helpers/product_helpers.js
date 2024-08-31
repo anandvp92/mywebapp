@@ -4,13 +4,12 @@ var collections = require('../config/collections');
 
 module.exports = {
     addProduct: (product, callback) => {
-        console.log("Adding product:", product);
-
+        //console.log("Adding product:", product);
         const database = db.get();
-        database.collection(collections.PRODUCT_COLLECTION).insertOne(product)
-            .then((result) => {
-                console.log("Insert Result:", result);
-                callback("Producted Added");
+        database.collection(collections.PRODUCT_COLLECTION).insertOne(product).then((result) => {
+                //console.log("Insert Result:", result);
+                callback(result['insertedId'].toString());
+                //id(result.insertedId)
             })
             .catch((err) => {
                 console.error("Insert Error:", err);

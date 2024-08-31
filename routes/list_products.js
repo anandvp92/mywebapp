@@ -11,7 +11,7 @@ const product_data ={
 router.get('/',(req,res,next)=>{
 
     product_helpers.list_Products().then(data=>{
-        console.log(data)
+        //console.log(data)
     return res.render('admin/list_products',{admin:true,title:'Product List',product:data});
      
     }).catch(err=>{
