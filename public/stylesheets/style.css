@@ -1,6 +1,3 @@
-
-
-
 .test .mycard{
 display: flex;
 padding: auto;
@@ -40,4 +37,15 @@ padding: 0 10rem ;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.loginform{
+    display: flex;
+    justify-content: space-evenly;
+    justify-items: center;
+    margin: 10px 0;
+}
+
+.loginform h1{
+text-align: center;
 }

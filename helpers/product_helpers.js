@@ -21,7 +21,9 @@ module.exports = {
 
     list_Products: ()=> new Promise ( async (resolve,reject)=>{
         let products = await db.get().collection(collections.PRODUCT_COLLECTION).find().toArray();
-        if (products)  resolve(products);
-        else reject("Something went wrong");
-    })  
+        if (products.length>0) resolve(products);
+        else  reject("No Product's Found");
+    })  ,
+
+      
 }

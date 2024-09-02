@@ -1,3 +1,4 @@
+    {{#if product}}
 <div class="container ">
     <div class="d-flex flex-row-reverse mt-4 mb-4" >
 <a href="/admin/createproducts"><button type="button" class="btn btn-success ">Add Products</button></a>
@@ -24,14 +25,17 @@
       <td>{{this.catogoray}}</td>
       <td><img src="/product_images/{{this._id}}.jpeg" style="width: 80px; height:auto"></td>
       <td>
-        <button>Delete</button>
+        <button value="{{this._id}}">Delete</button>
         <button>Edit</button>
       </td>
      
     </tr>
     {{/each}}
+    
   </tbody>
 </table>
-
+{{else}}
+    <h1 style="text-align: center;">{{err}}</h1>
+    {{/if}}
 </div>
 

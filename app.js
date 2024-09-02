@@ -16,6 +16,7 @@ var list_products= require('./routes/list_products');
 var cart_Router = require('./routes/cart');
 var orders_Router=require('./routes/orders');
 
+
 var fileupload= require('express-fileupload');
 
 var app = express();
@@ -55,6 +56,8 @@ app.use('/admin/createproducts',create_products);
 app.use('/admin/listproducts',list_products);
 app.use('/cart',cart_Router);
 app.use('/orders',orders_Router);
+
+
 
 
 // Catch 404 and forward to error handler
