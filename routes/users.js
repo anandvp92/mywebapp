@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var createuser = require('../helpers/users_helper')
 
 /* GET users listing. */
 router.get('/',(req, res, next)=> {
@@ -21,8 +22,17 @@ router.post('/login',(req,res,next)=>{
 })
 
 router.post('/signup',(req,res,next)=>{
-    let username=req.body['email']
-    return res.render('user_product',{username})
+    createuser.doSignup(req.body).then(value=>{
+        console.log(value)
+        return res.render('signup',{username:value})
+      }).catch(err=>{
+        console.log(err)
+        return res.render('signup',{errmsg:err})
+ 
+      })
+  
+    
+
 })
 
 module.exports = router;
