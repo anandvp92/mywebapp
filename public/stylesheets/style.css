@@ -49,3 +49,12 @@ padding: 0 10rem ;
 .loginform h1{
 text-align: center;
 }
+
+.username{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    margin: auto 10px;
+
+}

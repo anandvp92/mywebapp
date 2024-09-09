@@ -20,4 +20,9 @@ router.post('/login',(req,res,next)=>{
     return res.render('login',{})
 })
 
+router.post('/signup',(req,res,next)=>{
+    let username=req.body['email']
+    return res.render('user_product',{username})
+})
+
 module.exports = router;
