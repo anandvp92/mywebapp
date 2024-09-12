@@ -1,6 +1,8 @@
 const db = require('../config/connection');
 
 var collections = require('../config/collections');
+const { ObjectId } = require('mongodb');
+
 
 module.exports = {
     addProduct: (product, callback) => {
@@ -25,5 +27,18 @@ module.exports = {
         else  reject("No Product's Found");
     })  ,
 
-      
+     delete_Product:(productid)=>{
+    return new Promise(async (resolve,reject)=>{
+        if(productid){
+            await db.get().collection(collections.PRODUCT_COLLECTION).deleteOne({_id: new ObjectId(productid)}).then(()=>{
+            return resolve("Product Deleted");
+            })
+        }
+      else{
+       return  reject("Some thing went wrong!");
+      }
+})
+}
+
+
 }

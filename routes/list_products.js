@@ -11,12 +11,15 @@ router.get('/',(req,res,next)=>{
     product_helpers.list_Products().then(data=>{
         return res.render('admin/list_products',{admin:true,title:'Product List',product:data});
     }).catch(err=>{
-        return res.render('admin/list_products',{admin:true,title:'Product List',err});
-
-        
+        return res.render('admin/list_products',{admin:true,title:'Product List',err});        
     })
 
+
 });
+
+
+  
+
 
 module.exports=router;
 
