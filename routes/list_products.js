@@ -17,10 +17,7 @@ router.get('/',(req,res,next)=>{
 
 });
 
-
   
-
-
 module.exports=router;
 
 Handlebars.registerHelper("inc", value=> parseInt(value) + 1);

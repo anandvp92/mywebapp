@@ -1,17 +1,16 @@
 const db = require('../config/connection');
-
+const fs = require('fs');
 var collections = require('../config/collections');
 const { ObjectId } = require('mongodb');
 
 
 module.exports = {
     addProduct: (product, callback) => {
-        //console.log("Adding product:", product);
         const database = db.get();
         database.collection(collections.PRODUCT_COLLECTION).insertOne(product).then((result) => {
-                //console.log("Insert Result:", result);
+                
                 callback(result['insertedId'].toString());
-                //id(result.insertedId)
+              
             })
             .catch((err) => {
                 console.error("Insert Error:", err);
@@ -27,12 +26,28 @@ module.exports = {
         else  reject("No Product's Found");
     })  ,
 
-     delete_Product:(productid)=>{
+    delete_Product:(productid)=>{
     return new Promise(async (resolve,reject)=>{
         if(productid){
-            await db.get().collection(collections.PRODUCT_COLLECTION).deleteOne({_id: new ObjectId(productid)}).then(()=>{
-            return resolve("Product Deleted");
+            let result = await db.get().collection(collections.PRODUCT_COLLECTION).findOne({_id: new ObjectId(productid)});
+            await db.get().collection(collections.PRODUCT_COLLECTION).deleteOne({_id: new ObjectId(productid)});
+            let imagepath=result['image_path'];
+            if(imagepath){
+            await fs.unlink(imagepath,err=>{
+            if(err){
+                console.error(err);
+            }
+            else{
+                console.log("File deleted sucessfully")
+            }
             })
+                
+            }
+            else{
+                console.log("File not found or file doesnot exist");
+            }
+                        
+        resolve("Product is deleted");
         }
       else{
        return  reject("Some thing went wrong!");
