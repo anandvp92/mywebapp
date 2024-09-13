@@ -22,9 +22,8 @@ router.post('/login',(req,res,next)=>{
             return res.redirect('/admin/listproducts');
         }
         else{
-            console.log(value.stat)
-            console.log(value.msg[0])
-            return res.render('login',{msg:"password is wrong"});
+            console.log(value.stat)    
+            return res.render('login',{msg:value.msg});
         }
     }).catch((err)=>{
         return res.send('Logging failed')    

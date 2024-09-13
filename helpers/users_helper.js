@@ -39,7 +39,7 @@ module.exports={
                 })
              }
             else{
-                return resolve({stat:false,msg:email_msg})
+                return resolve({stat:false,msg:[email_msg,password_msg]})
              }
              
             }
