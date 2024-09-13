@@ -17,13 +17,22 @@ router.get('/signup',(req,res,next)=>{
 
 
 router.post('/login',(req,res,next)=>{
-    console.log(req.body['email']);
-    return res.render('login',{})
+    createuser.doLogin(req.body).then((value)=>{
+        if(value.stat){
+            return res.redirect('/admin/listproducts');
+        }
+        else{
+            console.log(value.stat)
+            console.log(value.msg[0])
+            return res.render('login',{msg:"password is wrong"});
+        }
+    }).catch((err)=>{
+        return res.send('Logging failed')    
+    })
 })
 
 router.post('/signup',(req,res,next)=>{
     createuser.doSignup(req.body).then(value=>{
-        console.log(value)
         return res.render('signup',{username:value})
       }).catch(err=>{
         console.log(err)
