@@ -52,8 +52,10 @@ module.exports = {
       else{
        return  reject("Some thing went wrong!");
       }
-})
+        })}
+,
+editProduct: (productid)=>{
+console.log(productid)
 }
-
 
 }

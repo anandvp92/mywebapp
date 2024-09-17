@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var productHelper= require('../helpers/product_helpers')
+var productHelper= require('../helpers/product_helpers');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -17,5 +17,12 @@ router.get('/deleteproduct/:id', async(req, res, next) => {
   })
 
 });
+
+
+router.get('/editproduct/:id',async(req,res,next)=>{
+  let productid = req.params.id
+  await productHelper.editProduct(productid)
+
+})
 
 module.exports = router;
