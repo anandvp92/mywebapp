@@ -16,12 +16,16 @@ router.get('/deleteproduct/:id', async(req, res, next) => {
     return res.redirect('/admin/listproducts');
   })
 
-});
+}); 
 
 
 router.get('/editproduct/:id',async(req,res,next)=>{
-  let productid = req.params.id
-  await productHelper.editProduct(productid)
+  await productHelper.editProduct(req.params.id).then(value=>{
+    console.log(value)
+    return res.render('admin/updateproduct',{product:value});
+  }).catch(err=>{
+    console.log(err)
+  })
 
 })
 
