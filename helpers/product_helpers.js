@@ -2,7 +2,7 @@ const db = require('../config/connection');
 const fs = require('fs');
 var collections = require('../config/collections');
 const { ObjectId } = require('mongodb');
-const { promiseHooks } = require('v8');
+
 
 
 module.exports = {
@@ -61,8 +61,8 @@ return new Promise((resolve,reject,next)=>{
         
         return reject("There is no product")
     }
-let product = db.get().collection(collections.PRODUCT_COLLECTION).findOne({_id:new ObjectId(productid)})
-   return resolve(product)
+        let product = db.get().collection(collections.PRODUCT_COLLECTION).findOne({_id:new ObjectId(productid)})
+        return resolve(product)
 })
 }
 

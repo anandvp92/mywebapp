@@ -21,8 +21,8 @@ router.get('/deleteproduct/:id', async(req, res, next) => {
 
 router.get('/editproduct/:id',async(req,res,next)=>{
   await productHelper.editProduct(req.params.id).then(value=>{
-    console.log(value)
-    return res.render('admin/updateproduct',{product:value});
+    console.log(value.image_path.replace('./public',''))
+    return res.render('admin/updateproduct',{product:value,admin:true,productimage:value.image_path.replace('./public','')});
   }).catch(err=>{
     console.log(err)
   })
