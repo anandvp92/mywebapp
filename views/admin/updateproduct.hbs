@@ -41,16 +41,16 @@
           />
         </div>
 <div style="display: flex; justify-content:center ;flex-direction:column;margin:1rem 0">
-  <label style="text-align: center;">Current image</label>
+  <label style="text-align: center;">Image</label>
 
-<img src="{{productimage}}"class="img-thumbnail" alt="Responsive image">
+<img src="{{productimage}}"class="img-thumbnail"  alt="Responsive image" id="Imagesrc">
 </div>
         <div class="form-group mt-3">
           <input
             type="file"
             class="form-control-file"
             name="image"
-            id="Upload Image"
+            id="Image" onchange="Viewsrc(event)"
           />
         </div>
         <button type="submit" class="btn btn-success mt-1">Success</button>
@@ -58,3 +58,10 @@
     </div>
   </div>
 </section>
+
+ <script>
+let Viewsrc= (event) =>{
+  document.getElementById("Imagesrc").src=URL.createObjectURL (event.target.files[0])
+}
+</script>
+

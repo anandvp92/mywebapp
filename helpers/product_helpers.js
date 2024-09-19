@@ -1,7 +1,7 @@
 const db = require('../config/connection');
 const fs = require('fs');
 var collections = require('../config/collections');
-const { ObjectId } = require('mongodb');
+const {ObjectId}  = require('mongodb');
 
 
 
@@ -31,7 +31,7 @@ module.exports = {
     return new Promise(async (resolve,reject)=>{
         if(productid){
             let result = await db.get().collection(collections.PRODUCT_COLLECTION).findOne({_id: new ObjectId(productid)});
-            await db.get().collection(collections.PRODUCT_COLLECTION).deleteOne({_id: new ObjectId(productid)});
+            await db.get().collection(collections.PRODUCT_COLLECTION).deleteOne({_id: new  ObjectId(productid)});
             let imagepath=result['image_path'];
             if(imagepath){
             await fs.unlink(imagepath,err=>{
@@ -61,7 +61,7 @@ return new Promise((resolve,reject,next)=>{
         
         return reject("There is no product")
     }
-        let product = db.get().collection(collections.PRODUCT_COLLECTION).findOne({_id:new ObjectId(productid)})
+        let product = db.get().collection(collections.PRODUCT_COLLECTION).findOne({_id: new ObjectId(productid)})
         return resolve(product)
 })
 }

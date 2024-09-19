@@ -32,6 +32,8 @@ router.post('/login',(req,res,next)=>{
 
 router.post('/signup',(req,res,next)=>{
     createuser.doSignup(req.body).then(value=>{
+        req.session.loggedIn=true
+        req.session.user=value
         return res.render('signup',{username:value})
       }).catch(err=>{
         console.log(err)
