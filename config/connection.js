@@ -9,7 +9,6 @@ module.exports.connect = async (done) => {
         const database_name = 'Shopping';
         const client = await MongoClient.connect(url).then(client=>{
             state.db = client.db(database_name);
-            done("Database is connected");
         }).catch(err=>{
             done(err);
         });        
