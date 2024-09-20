@@ -21,12 +21,30 @@ router.get('/deleteproduct/:id', async(req, res, next) => {
 
 router.get('/editproduct/:id',async(req,res,next)=>{
   await productHelper.editProduct(req.params.id).then(value=>{
-    console.log(value.image_path.replace('./public',''))
-    return res.render('admin/updateproduct',{product:value,admin:true,productimage:value.image_path.replace('./public','')});
+ 
+    return res.render('admin/updateproduct',{product:value,admin:true,productimage:value.image_path.replace('./public','').toString()});
   }).catch(err=>{
     console.log(err)
   })
 
 })
+
+router.post('/editproduct/:id', async (req, res, next) => {
+  try {
+      // Check if the image file is uploaded
+      const hasImage = req.files && req.files.image;
+
+      // Call the updateproduct function with the necessary parameters
+     await productHelper.updateproduct(req.body, hasImage ? req.files.image : null, req.params.id).then(()=>{
+       return res.redirect('/admin/listproducts');
+     }).catch(err=>{
+      throw new Error("Some thing went wrong")
+     })
+
+  } catch (error) {
+      console.error("Error during product update:", error);
+      next(error);  // Pass the error to an error-handling middleware, if any
+  }
+});
 
 module.exports = router;

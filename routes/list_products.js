@@ -19,13 +19,15 @@ router.get('/',(req,res,next)=>{
 });
 
   
-module.exports=router;
 
 Handlebars.registerHelper("inc", value=> parseInt(value) + 1);
-
 
 Handlebars.registerHelper('removepublic',(imagepath)=>{
     return imagepath.replace('./public','')
 })
+
+
+module.exports=router;
+
 
 
